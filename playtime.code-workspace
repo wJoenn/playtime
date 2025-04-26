@@ -1,0 +1,6 @@
+{
+  "folders": [
+    { "name": "ROOT", "path": "." },
+    { "name": "API", "path": "api" },
+  ],
+}

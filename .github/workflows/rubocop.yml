@@ -1,0 +1,28 @@
+name: RubyOnRails
+
+on:
+  pull_request:
+    paths:
+     - api/**
+  push:
+    branches: [master]
+    paths:
+     - api/**
+
+env:
+  RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+
+jobs:
+  rubocop:
+    name: RuboCop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: ./api
+      - name: Run RuboCop
+        run: bundle exec rubocop
+        working-directory: ./api
