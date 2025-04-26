@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_26_191629) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_26_193241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,4 +22,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_191629) do
     t.datetime "updated_at", null: false
     t.index ["appid"], name: "index_games_on_appid", unique: true
   end
+
+  create_table "sessions", force: :cascade do |t|
+    t.boolean "active", default: true, null: false
+    t.integer "duration", null: false
+    t.date "played_at", null: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_sessions_on_game_id"
+  end
+
+  add_foreign_key "sessions", "games"
 end

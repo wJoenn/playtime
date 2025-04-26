@@ -3,6 +3,20 @@ RSpec.describe Game do
   let(:cover_url) { "https://steamcdn-a.akamaihd.net/steam/apps/489830/library_600x900_2x.jpg" }
   let(:name) { "The Elder Scrolls V: Skyrim Special Edition" }
 
+  describe "associations" do
+    it "has many Session" do
+      game = create(:game)
+      expect(game.sessions).to all be_a Session
+    end
+
+    it "destroys sessions on destroyed" do
+      game = create(:game)
+      create(:session, game:)
+
+      expect { game.destroy }.to change(Session, :count).by(-1)
+    end
+  end
+
   describe "validations" do
     it "creates a new game with proper params" do
       game = described_class.create(appid:, cover_url:, name:)
