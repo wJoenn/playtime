@@ -1,0 +1,26 @@
+name: RubyOnRails
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - api/**
+
+env:
+  RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+
+jobs:
+  flyio:
+    name: Fly.io
+    concurrency: flyio-group
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Fly
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploy API to Fly.io
+        run: flyctl deploy --remote-only
+        working-directory: ./api
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
