@@ -18,7 +18,7 @@ module Steam
         Rails.application.credentials.steam => { key:, id: steamid }
         query = URI.encode_www_form(**params, key:, steamid:)
         response = HTTParty.get("#{STEAM_URL}#{endpoint}?#{query}")
-        response.deep_symbolize_keys
+        response.parsed_response.deep_symbolize_keys
       end
     end
   end
