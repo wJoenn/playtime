@@ -4,13 +4,13 @@ RSpec.describe Game do
   let(:name) { "The Elder Scrolls V: Skyrim Special Edition" }
 
   describe "associations" do
+    let(:game) { create(:game) }
+
     it "has many Session" do
-      game = create(:game)
       expect(game.sessions).to all be_a Session
     end
 
     it "destroys sessions on destroyed" do
-      game = create(:game)
       create(:session, game:)
 
       expect { game.destroy }.to change(Session, :count).by(-1)
@@ -51,6 +51,16 @@ RSpec.describe Game do
 
       expect(game).not_to be_persisted
       expect(game.error_codes).to eq({ name: %i[taken] })
+    end
+  end
+
+  describe "#playtime" do
+    it "returns the total playtime of a game" do
+      game = create(:game)
+      create(:session, duration: 30.minutes.to_i, game:)
+      create(:session, duration: 60.minutes.to_i, game:)
+
+      expect(game.playtime).to be 90.minutes.to_i
     end
   end
 end
