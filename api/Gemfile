@@ -4,6 +4,10 @@ source "https://rubygems.org"
 # [https://github.com/Shopify/bootsnap]
 gem "bootsnap", "~> 1.18.4", require: false # Installed by default
 
+# A multithreaded, Postgres-based, ActiveJob backend
+# [https://github.com/bensheldon/good_job]
+gem "good_job", "~> 4.10.0"
+
 # Makes http request to other web servers
 # [https://github.com/jnunemaker/httparty]
 gem "httparty", "~> 0.23.1"
