@@ -95,6 +95,8 @@ GEM
     date (3.4.1)
     diff-lcs (1.6.1)
     docile (1.4.1)
+    dockerfile-rails (1.7.9)
+      rails (>= 3.0.0)
     drb (2.2.1)
     erubi (1.13.1)
     et-orbi (1.2.11)
@@ -341,6 +343,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (~> 1.18.4)
   brakeman (~> 7.0.2)
+  dockerfile-rails (~> 1.7.9)
   factory_bot_rails (~> 6.4.4)
   good_job (~> 4.10.0)
   httparty (~> 0.23.1)

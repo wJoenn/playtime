@@ -33,6 +33,10 @@ gem "rails", "~> 8.0.2"
 gem "tzinfo-data", "~> 2.0.6", platforms: %i[jruby windows] # Installed by default
 
 group :development do
+  # Provides a Rails generator to produce Dockerfiles and related files.
+  # [https://github.com/fly-apps/dockerfile-rails]
+  gem "dockerfile-rails", "~> 1.7.9"
+
   # Make your Rubies go faster with this command line tool highly inspired by fast-ruby
   # [https://github.com/DamirSvrtan/fasterer]
   # gem "fasterer", "~> 0.11.0"
