@@ -4,6 +4,10 @@ source "https://rubygems.org"
 # [https://github.com/Shopify/bootsnap]
 gem "bootsnap", "~> 1.18.4", require: false # Installed by default
 
+# A Ruby gem to load environment variables from `.env`.
+# [https://github.com/bkeepers/dotenv]
+gem "dotenv", "~> 3.1.8"
+
 # A multithreaded, Postgres-based, ActiveJob backend
 # [https://github.com/bensheldon/good_job]
 gem "good_job", "~> 4.10.0"
