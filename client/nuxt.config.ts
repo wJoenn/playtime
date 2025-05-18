@@ -7,6 +7,10 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  imports: {
+    dirs: ['utils/**'],
+  },
+
   modules: [
     '@leexi/shared',
     ['@nuxt/eslint', {
