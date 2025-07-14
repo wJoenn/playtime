@@ -19,6 +19,14 @@ module Steam
         query = URI.encode_www_form(**params, key:, steamid:)
         response = HTTParty.get("#{STEAM_URL}#{endpoint}?#{query}")
         response.parsed_response.deep_symbolize_keys
+      rescue NoMethodError => error
+        raise error unless error.message == "undefined method 'deep_symbolize_keys' for an instance of String"
+
+        message = error.message
+        message += "\nResponse Status Code: #{response.code}"
+        message += "\nResponse Parsed Body: #{response.parsed_response[0..499]}"
+
+        raise NoMethodError, message
       end
     end
   end
